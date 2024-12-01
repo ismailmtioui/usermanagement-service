@@ -1,22 +1,25 @@
+// User.java
 package com.example.usermanagement_service.entity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;  // Use javax.persistence.Id for relational databases like JPA
+import jakarta.persistence.Id;
 
 @Entity
 public class User {
 
-    @Id  // Ensure this is from javax.persistence
+    @Id
     private String cin;  // CIN will act as the primary key
     private String email;
     private String password;
+    private String role;  // Add the role field
 
     public User() {}
 
-    public User(String cin, String email, String password) {
+    public User(String cin, String email, String password, String role) {
         this.cin = cin;
         this.email = email;
         this.password = password;
+        this.role = role;  // Initialize the role
     }
 
     // Getters and Setters
@@ -42,5 +45,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

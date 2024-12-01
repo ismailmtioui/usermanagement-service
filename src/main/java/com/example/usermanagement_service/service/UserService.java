@@ -1,6 +1,6 @@
+
 // UserService.java
 package com.example.usermanagement_service.service;
-
 
 import com.example.usermanagement_service.Dto.UserDTO;
 import com.example.usermanagement_service.entity.User;
@@ -22,8 +22,8 @@ public class UserService {
         User existingUser = userRepository.findById(userDTO.getCin()).orElse(null);
 
         if (existingUser == null) {
-            // Create a new user if they don't exist
-            User newUser = new User(userDTO.getCin(), userDTO.getEmail(), userDTO.getPassword());
+            // Create a new user if they don't exist, set role as "USER"
+            User newUser = new User(userDTO.getCin(), userDTO.getEmail(), userDTO.getPassword(), "USER");
             userRepository.save(newUser);
             System.out.println("User created: " + newUser.getCin());
         } else {
